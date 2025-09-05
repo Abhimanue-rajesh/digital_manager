@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 EXTERNAL_APPS = [
     "accounts.apps.AccountsConfig",
     "creative.apps.CreativeConfig",
+    "dashboard.apps.DashboardConfig",
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
