@@ -23,13 +23,17 @@ INSTALLED_APPS = [
 
 # Add External Apps Here
 EXTERNAL_APPS = [
-    "accounts.apps.AccountsConfig",  # Example - Need to Remove
+    "accounts.apps.AccountsConfig",
+    "creative.apps.CreativeConfig",
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS
 
 LOGIN_REDIRECT_URL = "home"
+
 LOGOUT_REDIRECT_URL = "home"
+
+AUTH_USER_MODEL = "accounts.User"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -60,7 +64,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {

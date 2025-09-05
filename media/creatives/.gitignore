@@ -3,5 +3,3 @@
 
 # Do not ignore this .gitignore file
 !.gitignore
-# Do not ignore directories, so we can still track empty directories if needed
-!*/
