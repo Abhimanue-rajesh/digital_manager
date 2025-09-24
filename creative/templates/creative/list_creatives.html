@@ -1,0 +1,54 @@
+{% extends "authenticated_base.html" %}
+{% block content %}
+    <div class="container mt-3">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg">
+                        <div class="container-fluid">
+                            <p class="navbar-brand mb-0">All Creatives</p>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="{% url 'create_creative' %}">Add Creative</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for creative in creatives %}
+                <div class="col-3 mb-2">
+                    <a href="{% url 'detail_creative' creative.pk %}" class="text-decoration-none text-dark">
+                        <div class="card h-100 shadow-sm">
+                            {% if creative.image %}
+                                <img src="{{ creative.image.url }}"
+                                     height=""
+                                     width=""
+                                     class="card-img-top fixed-card-img"
+                                     alt="{{ creative.title }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ creative.title }}</h5>
+                                <p class="card-text">
+                                    <strong>Posting Date:</strong> {{ creative.posting_date|date:"jS F (l) Y" }}
+                                    <br>
+                                    <strong>Brand:</strong> {{ creative.brand|default:"N/A" }}
+                                    <br>
+                                    <strong>Status:</strong> {{ creative.get_status_display }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No creatives found.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

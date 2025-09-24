@@ -5,7 +5,7 @@ class Creative(models.Model):
     title = models.CharField(max_length=200)
     brand = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to="creatives/")
-    posting_date = models.DateTimeField(auto_now_add=True)
+    posting_date = models.DateField()
     status = models.CharField(
         max_length=20,
         choices=(
